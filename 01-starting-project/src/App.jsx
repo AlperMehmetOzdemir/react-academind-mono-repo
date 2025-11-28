@@ -45,10 +45,14 @@ function App() {
         <section id='examples'>
           <h2>Examples</h2>
           <menu>
-            <TabButton onClick={() => handleMenuSelect("components")}>Components</TabButton>
-            <TabButton onClick={() => handleMenuSelect("jsx")}>JSX</TabButton>
-            <TabButton onClick={() => handleMenuSelect("props")}>Props</TabButton>
-            <TabButton onClick={() => handleMenuSelect("state")}>State</TabButton>
+            {Object.keys(EXAMPLES).map((key) => (
+              <TabButton
+                key={key}
+                isSelected={selectedContent == key}
+                onClick={() => handleMenuSelect(key)}>
+                {EXAMPLES[key].title}
+              </TabButton>
+            ))}
           </menu>
           {tabContent}
         </section>
